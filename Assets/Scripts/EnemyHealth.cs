@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
 
     private Image _healthBar;
     private Enemy _enemy;
+    public ObjectPooler _pooler;
     
 
     private void Start()
@@ -54,6 +55,7 @@ public class EnemyHealth : MonoBehaviour
         if (CurrentHealth <= 0)
         {
             CurrentHealth = 0;
+            
             Die();
         }
         else
@@ -70,8 +72,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
+
         OnEnemyKilled?.Invoke(_enemy);
-        
+        _enemy.gameObject.SetActive(false);
+        ResetHealth();
    
     }
 }

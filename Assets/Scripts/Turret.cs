@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    [SerializeField] private float attackRange = 3f;
+    [SerializeField] public static float attackRange = 3f;
 
     public Enemy CurrentEnemyTarget { get; set; }
 
@@ -68,7 +68,7 @@ public class Turret : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
         if (!_gameStarted)
         {
