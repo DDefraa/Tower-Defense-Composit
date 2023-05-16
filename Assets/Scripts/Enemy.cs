@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
+    public float baseHP = 10f;
     public static Action<Enemy> OnEndReached;
 
     [SerializeField] private float moveSpeed = 3f;
@@ -104,6 +106,13 @@ public class Enemy : MonoBehaviour
         else
         {
             EndPointReached();
+            baseHP -= 10f;
+            Debug.Log(baseHP);
+
+            if (baseHP <= 0f)
+            {
+                SceneManager.LoadScene("Menu");
+            }
         }
     }
 
